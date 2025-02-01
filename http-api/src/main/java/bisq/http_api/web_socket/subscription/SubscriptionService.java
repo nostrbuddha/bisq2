@@ -23,6 +23,7 @@ import bisq.chat.ChatService;
 import bisq.common.application.Service;
 import bisq.http_api.web_socket.domain.BaseWebSocketService;
 import bisq.http_api.web_socket.domain.OpenTradeItemsService;
+import bisq.http_api.web_socket.domain.language.I18NWebSocketService;
 import bisq.http_api.web_socket.domain.language.LanguageWebSocketService;
 import bisq.http_api.web_socket.domain.market_price.MarketPriceWebSocketService;
 import bisq.http_api.web_socket.domain.offers.NumOffersWebSocketService;
@@ -48,6 +49,7 @@ public class SubscriptionService implements Service {
     private final OffersWebSocketService offersWebSocketService;
     private final TradesWebSocketService tradesWebSocketService;
     private final TradePropertiesWebSocketService tradePropertiesWebSocketService;
+    private final I18NWebSocketService i18nWebSocketService;
     private final LanguageWebSocketService languageWebSocketService;
 
     public SubscriptionService(ObjectMapper objectMapper,
@@ -64,6 +66,7 @@ public class SubscriptionService implements Service {
         offersWebSocketService = new OffersWebSocketService(objectMapper, subscriberRepository, chatService, userService, bondedRolesService);
         tradesWebSocketService = new TradesWebSocketService(objectMapper, subscriberRepository, openTradeItemsService);
         tradePropertiesWebSocketService = new TradePropertiesWebSocketService(objectMapper, subscriberRepository, tradeService);
+        i18nWebSocketService = new I18NWebSocketService(objectMapper, subscriberRepository, bondedRolesService);
         languageWebSocketService = new LanguageWebSocketService(objectMapper, subscriberRepository, bondedRolesService);
     }
 
@@ -132,6 +135,9 @@ public class SubscriptionService implements Service {
             }
             case TRADE_PROPERTIES -> {
                 return Optional.of(tradePropertiesWebSocketService);
+            }
+            case I18N_PAIRS -> {
+                return Optional.of(i18nWebSocketService);
             }
             case LANGUAGE_PAIRS -> {
                 return Optional.of(languageWebSocketService);

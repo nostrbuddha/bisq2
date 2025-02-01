@@ -23,5 +23,6 @@ public enum Topic {
     OFFERS,
     TRADES,
     TRADE_PROPERTIES,
+    I18N_PAIRS,
     LANGUAGE_PAIRS,
 }

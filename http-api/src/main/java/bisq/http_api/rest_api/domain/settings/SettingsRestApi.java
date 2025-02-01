@@ -97,6 +97,8 @@ public class SettingsRestApi extends RestApiBase {
                 supportedLanguageCodes.addAll(request.supportedLanguageCodes());
             } else if (request.maxTradePriceDeviation() != null) {
                 settingsService.setMaxTradePriceDeviation(request.maxTradePriceDeviation());
+            } else if (request.useAnimations() != null) {
+                settingsService.getUseAnimations(request.useAnimations());
             } else if (request.selectedMarket() != null) {
                 settingsService.getSelectedMarket().set(DtoMappings.MarketMapping.toBisq2Model(request.selectedMarket()));
             } else if (request.numDaysAfterRedactingTradeData() != null) {

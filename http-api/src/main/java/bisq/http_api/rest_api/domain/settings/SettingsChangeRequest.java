@@ -29,7 +29,12 @@ public record SettingsChangeRequest(
         @Nullable String languageCode,
         @Nullable Set<String> supportedLanguageCodes,
         @Nullable Double maxTradePriceDeviation,
+<<<<<<< HEAD
         @Nullable MarketDto selectedMarket,
         @Nullable Integer numDaysAfterRedactingTradeData
+=======
+        @Nullable Boolean useAnimations,
+        @Nullable MarketDto selectedMarket
+>>>>>>> 50088a325 ( - useAnimations in Settings WS Service; Debug code for current language code in i18n, allLang WS services)
 ) {
 }

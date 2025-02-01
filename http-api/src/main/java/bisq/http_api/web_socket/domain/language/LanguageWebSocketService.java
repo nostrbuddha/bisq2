@@ -4,6 +4,7 @@ import bisq.bonded_roles.BondedRolesService;
 import bisq.common.locale.LanguageRepository;
 import bisq.common.observable.Pin;
 import bisq.http_api.web_socket.domain.BaseWebSocketService;
+import bisq.http_api.web_socket.subscription.Subscriber;
 import bisq.http_api.web_socket.subscription.SubscriberRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -40,6 +41,10 @@ public class LanguageWebSocketService extends BaseWebSocketService {
 
     @Override
     public Optional<String> getJsonPayload() {
+
+        // TODO: How to get the latest subscription and it's langugeCode request parameter?
+        // LanguageRepository.setDefaultLanguage(languageCode);
+
         Map<String, String> languageMap = LanguageRepository.CODES.stream()
                 .collect(Collectors.toMap(code -> code, LanguageRepository::getDisplayString));
         return toJson(languageMap);
