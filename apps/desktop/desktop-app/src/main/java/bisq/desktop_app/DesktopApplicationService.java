@@ -239,7 +239,8 @@ public class DesktopApplicationService extends JavaSeApplicationService {
                 supportService,
                 tradeService,
                 settingsService,
-                openTradeItemsService);
+                openTradeItemsService,
+                accountService);
     }
 
     @Override
